@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Gallery</title>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --bg: #ffe0e9;
+        }
+
+        body {
+            background-color: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Envelope (စာအိတ်) */
+        .envelope-container {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .envelope {
+            position: relative;
+            width: 250px;
+            height: 180px;
+            background-color: #f08080;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            border-top: 90px solid #f4978e;
+            border-left: 125px solid transparent;
+            border-right: 125px solid transparent;
+            z-index: 2;
+            transition: 0.5s;
+            transform-origin: top;
+        }
+
+        .envelope-container:hover .envelope::before {
+            transform: rotateX(180deg);
+        }
+
+        /* Gallery Layout */
+        .hidden { display: none; }
+
+        #gallery {
+            width: 90%;
+            max-width: 450px;
+            animation: fadeIn 0.8s;
+            font-family: 'Dancing Script',cursive,sans-serif;
+        }
+
+        .slides {
+            position: relative;
+            background: #fff;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .my-photo {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: none;
+        }
+
+        /* Caption Styling (စာသားပုံစံ) */
+        .caption-container {
+            text-align: center;
+            margin: 15px 0;
+            min-height: 40px; /* စာသားမရှိလည်း နေရာမရွေ့အောင် */
+        }
+
+        #caption-text {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .btn:hover { opacity: 1; }
+        .prev { left: -20px; }
+        .next { right: -20px; }
+
+        .counter {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+     <audio id="mySong" loop>
+        <source src="music.mp3.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="envelope-view" class="envelope-container" onclick="showGallery()">
+        <div class="envelope"></div>
+        <p style="color: var(--primary); font-weight: bold;">Open the Letter ❤️</p>
+    </div>
+
+    <div id="gallery" class="hidden">
+        <div class="slides">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_23-19-32 (2).jpg" data-caption="HOW LUCKY I AM">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_23-40-25.jpg" data-caption="YOU ARE MY VALENTINE❤️">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_21-44-25.jpg" data-caption="LOVE OF MY LIFE">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_21-42-15.jpg" data-caption="TOO MANY MORE YEARS OF US">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_21-42-26.jpg" data-caption="I'M THE LUCKIEST MAN ON THE EARTH">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_23-24-18.jpg" data-caption="YOUR SMILE IS MY MOST PRECIOUS TREASURE">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_23-33-26.jpg" data-caption="PLEASE ALWAYS BY MY SIDE">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_23-24-05.jpg" data-caption="IF LIFE IS A MOVIE YOU ARE BEST PART">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_21-42-28.jpg" data-caption="SWEET MOMENT">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_21-42-39.jpg"data-caption="EVERYTHING BECOME MORE BEAUTIFUL THE MOMENT YOU WALK INTO MY LIFE">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_21-42-43.jpg" data-caption=" YOU ARE THE Apple OF MY EYE 🍎">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2025-12-29_11-55-30.jpg" data-caption="I LOVE YOU THE MOST">
+            <img class="my-photo" src="C:\Users\P-000386\Downloads\Telegram Desktop\photo_2026-02-13_23-40-26.jpg"data-caption="Happy Valentine's Day My Love!">
+
+            <button class="btn prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="btn next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+<div class="caption-container">
+            <div id="caption-text"></div>
+        </div>
+
+        <div class="counter" id="status">1 / 5</div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const photos = document.getElementsByClassName("my-photo");
+
+        function showGallery() {
+            document.getElementById("envelope-view").classList.add("hidden");
+            document.getElementById("gallery").classList.remove("hidden");
+            displaySlide(slideIndex);
+            document.getElementById("mySong").play()
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= photos.length) { slideIndex = 0; }
+            if (slideIndex < 0) { slideIndex = photos.length - 1; }
+            displaySlide(slideIndex);
+        }
+
+        function displaySlide(n) {
+            // ပုံအားလုံးကို အရင်ဖျောက်
+            for (let i = 0; i < photos.length; i++) {
+                photos[i].style.display = "none";
+            }
+            
+            // လက်ရှိပုံကို ပြ
+            photos[n].style.display = "block";
+            
+            // စာသားကို ယူပြီးပြ
+            const currentCaption = photos[n].getAttribute("data-caption");
+            document.getElementById("caption-text").innerText = currentCaption ? currentCaption : "";
+            
+            // Counter ကို Update လုပ် (ဥပမာ- 1 / 20)
+            document.getElementById("status").innerText = (n + 1) + " / " + photos.length;
+            
+        }
+    </script>
+</body>
+</html>
